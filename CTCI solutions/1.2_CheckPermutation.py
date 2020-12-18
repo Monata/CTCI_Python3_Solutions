@@ -27,11 +27,13 @@ def check_permutation_counting(s1, s2):
     return True
 
 
-check = [(("abc", "cba"), True),
-         (("kalamaro", "kalamarro"), False),
-         (("CTCI is not very nice", "random word"), False),
-         (("MrJockTVquizPhDbagsfewlynx.", "MrJockTVquizPhDbagsfewlynx."), True)]
+if __name__ == "__main__":
+    print("CheckPermutation")
+    check = [(("abc", "cba"), True),
+             (("kalamaro", "kalamarro"), False),
+             (("CTCI is not very nice", "random word"), False),
+             (("MrJockTVquizPhDbagsfewlynx.", "MrJockTVquizPhDbagsfewlynx."), True)]
 
-for i in check:
-    assert (check_permutation(*i[0]) == i[1])
-    assert (check_permutation_counting(*i[0]) == i[1])
+    for i in check:
+        assert (check_permutation(*i[0]) == i[1])
+        assert (check_permutation_counting(*i[0]) == i[1])

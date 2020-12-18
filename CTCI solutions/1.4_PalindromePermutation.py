@@ -17,12 +17,16 @@ def is_palindrome(inp):
     return True
 
 
-check = [("abc", False), ("kalamaro", False),
-         ("CTCI is not very nice", False),
-         ("MrJockTVquizPhDbagsfewlynx.", False),
-         ("taco cat",True),
-         ("101101",True),
-         ("11111111111122",True)]
+if __name__ == '__main__':
 
-for i in check:
-    assert (is_palindrome(i[0]) == i[1])
+    print("PalindromePermutation")
+
+    check = [("abc", False), ("kalamaro", False),
+             ("CTCI is not very nice", False),
+             ("MrJockTVquizPhDbagsfewlynx.", False),
+             ("taco cat", True),
+             ("101101", True),
+             ("11111111111122", True)]
+
+    for i in check:
+        assert (is_palindrome(i[0]) == i[1])

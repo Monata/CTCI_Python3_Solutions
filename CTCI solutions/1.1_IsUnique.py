@@ -22,9 +22,12 @@ def is_unique_no_memory_log_n(inp):
             return False
     return True
 
-check = [("abc", True), ("kalamaro", False), ("CTCI is not very nice", False), ("MrJockTVquizPhDbagsfewlynx.", True)]
 
-for i in check:
-    assert (is_unique_no_memory(i[0]) == i[1])
-    # assert (is_unique_no_memory_log_n(i[0]) == i[1])
-    assert (is_unique(i[0]) == i[1])
+if __name__ == "__main__":
+    print("IsUnique")
+    check = [("abc", True), ("kalamaro", False), ("CTCI is not very nice", False), ("MrJockTVquizPhDbagsfewlynx.", True)]
+
+    for i in check:
+        assert (is_unique_no_memory(i[0]) == i[1])
+        # assert (is_unique_no_memory_log_n(i[0]) == i[1])
+        assert (is_unique(i[0]) == i[1])
