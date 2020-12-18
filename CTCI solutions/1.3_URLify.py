@@ -2,7 +2,7 @@
 # space at the end to hold the additional characters, and that you are given the "true" length of the string.
 
 def urlify(inp):
-    return inp.split(" ").filter("").join("%20")
+    return "%20".join(filter(lambda x: x != "",inp.split(" ")))
 
 check = [("Mr John Smith   ", "Mr%20John%20Smith"),("pan cakes  ","pan%20cakes")]
 
