@@ -14,21 +14,49 @@ def rotate_matrix(inp):
         i += 1
     return res
 
+def rotate_matrix_in_place(inp):
+    i = 0
+    l = len(inp[0])
+    l -= 1
+    while i < l:
+        j = i
+        while j < l - i:
+            temp = inp[i][j]
+            inp[i][j] = inp[l-j][i]
+            inp[l-j][i] = inp[l-i][l-j]
+            inp[l - i][l - j] = inp[j][l-i]
+            inp[j][l - i] = temp
+            j += 1
+        i += 1
+    return inp
+
+
 
 if __name__ == "__main__":
     print("MatrixRotate")
     check = [
         ([[1, 1, 1, 2],
-          [4, 0, 0, 2],
-          [4, 0, 0, 2],
+          [4, 0, 9, 2],
+          [4, 9, 0, 2],
           [4, 3, 3, 3]]
          ,
 
          [[4, 4, 4, 1],
-          [3, 0, 0, 1],
-          [3, 0, 0, 1],
+          [3, 9, 0, 1],
+          [3, 0, 9, 1],
           [3, 2, 2, 2]]
-         )]
+         ),
+        ([[1, 1, 1],
+          [4, 0, 2],
+          [1, 1, 1]]
+         ,
+
+         [[1, 4, 1],
+          [1, 0, 1],
+          [1, 2, 1]]
+         )
+    ]
 
     for i in check:
         assert (rotate_matrix(i[0]) == i[1])
+        assert (rotate_matrix_in_place(i[0]) == i[1])
