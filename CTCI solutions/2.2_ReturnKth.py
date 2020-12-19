@@ -1,4 +1,4 @@
-# Remove Dups! Write code to remove duplicates from an unsorted linked list.
+# Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list
 
 class Node:
     "A simple linked list implementation"
@@ -33,32 +33,22 @@ class LinkedList:
         return " -> ".join(l)
 
 
-def remove_dups(head):
-    prev = head
-    while prev.next:
-        c2 = prev.next
-        while c2.next:
-            if c2.next.data == prev.next.data:
-                prev.next = prev.next.next
-                c2.next = c2.next.next
-            else:
-                c2 = c2.next
-        prev = prev.next
-
+def get_kth(head,k):
+    runner = head
+    for i in range(k):
+        runner = runner.next
+    while runner:
+        head = head.next
+        runner = runner.next
+    return head
 
 if __name__ == "__main__":
+    print("get_kth")
     ll = LinkedList()
     pt = ll
     for i in range(10):
         pt.next = Node(i)
         pt = pt.next
-    for i in range(3):
-        pt.next = Node(i)
-        pt = pt.next
-    for i in range(7, 9):
-        pt.next = Node(i)
-        pt = pt.next
     pt = None
     print("initial", ll)
-    remove_dups(ll)
-    print("after", ll)
+    print(get_kth(ll,2))
