@@ -31,8 +31,8 @@ def TreeConstructor(nodes):
     return None
 
 if __name__ == "__main__":
-    l = [i for i in range(0,3)]
-
+    l = [i for i in range(0,15)]
+    print("MinimalTree")
     tree = TreeConstructor(l)
     print(tree)
 
