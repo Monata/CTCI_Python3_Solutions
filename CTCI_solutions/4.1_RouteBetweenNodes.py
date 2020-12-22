@@ -73,11 +73,13 @@ class Graph:
         return self.nodes[item]
 
 
+
+
 class Node:
 
     def __init__(self,data):
         self.data = data
-        self.adj_nodes = []
+        self.adj_nodes = set()
 
     def __str__(self):
         return ("({}) -> {}".format(self.data,self.adj_nodes))
@@ -90,6 +92,9 @@ class Node:
 
     def __gt__(self, other):
         return self.data > other.data
+
+
+
 
 def breadth_first_search(start,target):
     queue = MyQueue()
@@ -111,11 +116,11 @@ if __name__ == "__main__":
     for i in range(100000):
         new_node = Node(i)
         if i != 0:
-            l.nodes[-1].adj_nodes.append(new_node)
+            l.nodes[-1].adj_nodes.add(new_node)
         if i % 3 == 0:
             for i in range(i//2,i,1000):
                 i -= 2
-                new_node.adj_nodes.append(l.nodes[i])
+                new_node.adj_nodes.add(l.nodes[i])
         l.nodes.append(new_node)
     print("initial //",l,"//")
     print(breadth_first_search(l[999],l[1]))
