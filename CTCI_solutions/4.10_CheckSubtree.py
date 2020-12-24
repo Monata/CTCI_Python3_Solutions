@@ -1,5 +1,10 @@
+# Tl and T2 are two very large binary trees, with Tl much bigger than T2. Create an algorithm to determine if T2 is a
+# subtree of Tl.
+
 # DA binary search tree was created by traversing through an array from left to right and inserting each element.
 # Given a binary search tree with distinct elements, print all possible arrays that could have led to this tree.
+from random import shuffle
+
 
 class Node:
     "A simple linked list implementation"
@@ -116,48 +121,38 @@ def weave(l1,l2,res,accum):
 # a,1,2,b,c
 # 1,a,b,2,c
 # 1,a,2,b,c
-def sequences(node):
-    res = []
+def sequences(node,target):
     if node:
-        right = sequences(node.right) # [[2]]
-        left = sequences(node.left)  # [[0]]
-        if left and right:
-            for r in right:
-                for l in left:
-                    accum = []
-                    weave(l,r,[],accum)
-                    for i in accum:
-                        i.insert(0,node.data)
-                        res.append(i)
-        elif right:
-            for r in right:
-                accum = []
-                weave([], r, [], accum)
-                for i in accum:
-                    i.insert(0, node.data)
-                    res.append(i)
-        elif left:
-            for l in left:
-                accum = []
-                weave(l, [], [], accum)
-                for i in accum:
-                    i.insert(0, node.data)
-                    res.append(i)
+        if node == target:
+            if str(node) == str(target):
+                return True
         else:
-            res.append([node.data])
-    return res
+            return sequences(node.right,target) or sequences(node.left,target)
+    return False
 
+class BinaryTree:
 
+    def __init__(self,root):
+        self.root = root
+
+    def helper_find(self,node, target):
+        if node:
+            if node.data == target:
+                return node
+            else:
+                n1 = self.helper_find(node.right, target) or self.helper_find(node.left, target)
+        return False
+
+    def find(self,elem):
+        return self.helper_find(self.root, elem)
 if __name__ == "__main__":
-    print("Sequences")
-    l = [i for i in range(0,10)]
+    print("Check Subtree")
+    l = [i for i in range(0,10000)]
+    shuffle(l)
     l1 = ['1','2']
     l2 = ['a','b']
-
     tree = TreeConstructor(l)
-    ll_dict = {}
-    print(tree)
-    for i in sequences(tree):
-        if str(tree_iterative(i)) == str(tree): # build a tree from result and compare if they are equal
-            continue
-        print(i,"Failed")
+    sub_tree = tree.left.right.right.right.right.left.left.left.right
+
+    print(sub_tree)
+    print(sequences(tree,sub_tree))
