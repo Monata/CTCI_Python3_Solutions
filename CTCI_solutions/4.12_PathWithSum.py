@@ -157,7 +157,7 @@ class BinaryTree:
 
 
 if __name__ == "__main__":
-    print("find_sum") ##positives
+    print("find_sum_for_positives") ##positives
     t = BinaryTree([3])
     t.root = TreeConstructor(range(1000000))
     print(t)
